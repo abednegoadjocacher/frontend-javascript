@@ -16,19 +16,7 @@ const student2: Student = {
     age: 22,
     location: 'Kumasi',
 };
-const student3: Student = {
-    firstName: 'Jane',
-    lastName: 'Smith',
-    age: 19,
-    location: 'Takoradi',
-}
-const student4: Student = {
-    firstName: 'Emily',
-    lastName: 'Johnson',
-    age: 21,
-    location: 'Cape Coast',
-}
-const studentsList: Student[] = [student1, student2, student3, student4];
+const studentsList: Student[] = [student1, student2];
 
 const table = document.createElement('table');
 const headerRow = document.createElement('tr');
