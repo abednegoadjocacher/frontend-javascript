@@ -1,57 +1,63 @@
+"use strict";
+/// <reference path="./subjects/Cpp.ts" />
+/// <reference path="./subjects/Java.ts" />
+/// <reference path="./subjects/React.ts" />
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.Teacher = exports.Director = exports.cTeacher = exports.react = exports.java = exports.cpp = void 0;
+exports.isDirector = isDirector;
+exports.executeWork = executeWork;
+// Use the Subjects namespace from the triple-slash reference, no import needed
+// create and export constants
+exports.cpp = new Subjects.Cpp();
+exports.java = new Subjects.Java();
+exports.react = new Subjects.React();
+exports.cTeacher = {
+    firstName: "John",
+    lastName: "Doe",
+    experienceTeachingC: 10,
+};
+// For Cpp
+console.log("C++");
+exports.cpp.setTeacher(exports.cTeacher);
+console.log(exports.cpp.getRequirements());
+console.log(exports.cpp.getAvailableTeacher());
+// For Java
+console.log("Java");
+exports.java.setTeacher(exports.cTeacher);
+console.log(exports.java.getRequirements());
+console.log(exports.java.getAvailableTeacher());
+// For React
+console.log("React");
+exports.react.setTeacher(exports.cTeacher);
+console.log(exports.react.getRequirements());
+console.log(exports.react.getAvailableTeacher());
+// Example Director and Teacher class definitions
 var Director = /** @class */ (function () {
     function Director() {
     }
-    Director.prototype.workFromHome = function () {
-        return 'Working from home';
-    };
-    Director.prototype.getCoffeeBreak = function () {
-        return 'Getting a coffee break';
-    };
     Director.prototype.workDirectorTasks = function () {
         return 'Getting to director tasks';
     };
     return Director;
 }());
+exports.Director = Director;
 var Teacher = /** @class */ (function () {
     function Teacher() {
     }
-    Teacher.prototype.workFromHome = function () {
-        return 'Cannot work from home';
-    };
-    Teacher.prototype.getCoffeeBreak = function () {
-        return 'Cannot have a break';
-    };
     Teacher.prototype.workTeacherTasks = function () {
         return 'Getting to work';
     };
     return Teacher;
 }());
-function createEmployee(salary) {
-    if (typeof salary === 'number') {
-        if (salary < 500) {
-            return new Teacher();
-        }
-    }
-    else {
-        return new Director();
-    }
-}
-console.log(createEmployee(200));
-console.log(createEmployee(1000));
-console.log(createEmployee('$500'));
+exports.Teacher = Teacher;
+// Type predicate
 function isDirector(employee) {
     return employee instanceof Director;
 }
+// Executes tasks depending on role
 function executeWork(employee) {
     if (isDirector(employee)) {
         return employee.workDirectorTasks();
     }
-    else {
-        return employee.workTeacherTasks();
-    }
+    return employee.workTeacherTasks();
 }
-console.log(executeWork(createEmployee(200)));
-console.log(executeWork(createEmployee(1000)));
-console.log(executeWork(createEmployee('$500')));
-executeWork(createEmployee(200));
-executeWork(createEmployee(1000));
