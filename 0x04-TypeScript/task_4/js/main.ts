@@ -4,30 +4,32 @@
 /// <reference path="./subjects/Java.ts" />
 /// <reference path="./subjects/React.ts" />
 
-// Now TypeScript knows about the Subjects namespace
-const cpp = new Subjects.Cpp();
-const java = new Subjects.Java();
-const react = new Subjects.React();
+// pull classes from namespace into local scope
+import Cpp = Subjects.Cpp;
+import Java = Subjects.Java;
+import React = Subjects.React;
+import Teacher = Subjects.Teacher;
 
-const cTeacher: Subjects.Teacher = {
+const cpp = new Cpp();
+const java = new Java();
+const react = new React();
+
+const cTeacher: Teacher = {
   firstName: "John",
   lastName: "Doe",
   experienceTeachingC: 10,
 };
 
-// For Cpp
 console.log("C++");
 cpp.setTeacher(cTeacher);
 console.log(cpp.getRequirements());
 console.log(cpp.getAvailableTeacher());
 
-// For Java
 console.log("Java");
 java.setTeacher(cTeacher);
 console.log(java.getRequirements());
 console.log(java.getAvailableTeacher());
 
-// For React
 console.log("React");
 react.setTeacher(cTeacher);
 console.log(react.getRequirements());
